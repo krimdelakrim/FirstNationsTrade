@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Shield, Scale, Hammer, Wrench, Truck, Leaf, FileText, ChevronRight, Mail, Phone } from "lucide-react";
 
-// Brand palette
+// 🎨 Brand palette
 const colors = {
   navy: "#0A1F44",
   gold: "#C6A200",
@@ -11,7 +11,7 @@ const colors = {
   forest: "#21564A",
 };
 
-// Simple UI components (self-contained)
+// 💎 Simple UI components (self-contained)
 const Button = ({ children, className = "", ...props }) => (
   <button
     className={`rounded-xl px-6 py-3 font-medium transition ${className}`}
@@ -37,10 +37,16 @@ const CardTitle = ({ children }) => (
 
 const CardContent = ({ children }) => <div className="p-4">{children}</div>;
 
-
-// Inline SVG Logo (shield + pillar)
+// 🏛 Inline SVG Logo (shield + pillar)
 const LogoMark = ({ size = 64 }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="First Nations Trade & Trust logo">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="First Nations Trade & Trust logo"
+  >
     <circle cx="50" cy="50" r="48" stroke={colors.gold} strokeWidth="4" fill={colors.navy} />
     <path d="M50 24 L75 36 V55 C75 66 64 76 50 80 C36 76 25 66 25 55 V36 L50 24Z" fill={colors.gold} />
     <g stroke={colors.white} strokeWidth="4" strokeLinecap="round">
@@ -51,6 +57,7 @@ const LogoMark = ({ size = 64 }) => (
     </g>
   </svg>
 );
+
 
 const divisions = [
   {
