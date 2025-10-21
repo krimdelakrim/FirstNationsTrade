@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Shield, Scale, Hammer, Wrench, Truck, Leaf, FileText, ChevronRight, Mail, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Brand palette
 const colors = {
@@ -12,6 +10,33 @@ const colors = {
   white: "#FFFFFF",
   forest: "#21564A",
 };
+
+// Simple UI components (self-contained)
+const Button = ({ children, className = "", ...props }) => (
+  <button
+    className={`rounded-xl px-6 py-3 font-medium transition ${className}`}
+    {...props}
+  >
+    {children}
+  </button>
+);
+
+const Card = ({ children, className = "" }) => (
+  <div className={`rounded-2xl border border-white/10 bg-white/5 ${className}`}>
+    {children}
+  </div>
+);
+
+const CardHeader = ({ children }) => (
+  <div className="p-4 border-b border-white/10">{children}</div>
+);
+
+const CardTitle = ({ children }) => (
+  <h3 className="text-lg font-semibold text-white">{children}</h3>
+);
+
+const CardContent = ({ children }) => <div className="p-4">{children}</div>;
+
 
 // Inline SVG Logo (shield + pillar)
 const LogoMark = ({ size = 64 }) => (
