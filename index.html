@@ -1,0 +1,319 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Shield, Scale, Hammer, Wrench, Truck, Leaf, FileText, ChevronRight, Mail, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+// Brand palette
+const colors = {
+  navy: "#0A1F44",
+  gold: "#C6A200",
+  gray: "#E5E5E5",
+  white: "#FFFFFF",
+  forest: "#21564A",
+};
+
+// Inline SVG Logo (shield + pillar)
+const LogoMark = ({ size = 64 }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="First Nations Trade & Trust logo">
+    <circle cx="50" cy="50" r="48" stroke={colors.gold} strokeWidth="4" fill={colors.navy} />
+    <path d="M50 24 L75 36 V55 C75 66 64 76 50 80 C36 76 25 66 25 55 V36 L50 24Z" fill={colors.gold} />
+    <g stroke={colors.white} strokeWidth="4" strokeLinecap="round">
+      <path d="M38 44 H62" />
+      <path d="M45 44 C45 40 55 40 55 44" />
+      <path d="M42 44 V66" />
+      <path d="M58 44 V66" />
+    </g>
+  </svg>
+);
+
+const divisions = [
+  {
+    key: "advocacy",
+    name: "Herndon–Hollis–Harper Advocacy Partnership",
+    short: "Administrative advocacy, legal research, and document preparation.",
+    icon: Scale,
+    accent: colors.gold,
+  },
+  {
+    key: "cleaning",
+    name: "HHH Cleaning Services",
+    short: "Detail-oriented residential, commercial, and government cleaning.",
+    icon: FileText,
+    accent: colors.gray,
+  },
+  {
+    key: "handyman",
+    name: "HHH Handyman Services",
+    short: "Reliable repairs, maintenance, and small remodels.",
+    icon: Wrench,
+    accent: colors.forest,
+  },
+  {
+    key: "courier",
+    name: "HHH Courier Services",
+    short: "Secure, discreet, and timely delivery for firms and individuals.",
+    icon: Truck,
+    accent: colors.gold,
+  },
+  {
+    key: "growth",
+    name: "HHH Self‑Growth & Governance",
+    short: "Programs that build self‑reliance, discipline, and community leadership.",
+    icon: Leaf,
+    accent: colors.forest,
+  },
+];
+
+const Section = ({ id, title, children }) => (
+  <section id={id} className="py-16 md:py-24">
+    <div className="max-w-6xl mx-auto px-4">
+      <h2 className="text-3xl md:text-4xl font-serif text-white tracking-tight mb-8">{title}</h2>
+      {children}
+    </div>
+  </section>
+);
+
+export default function FirstNationsSite() {
+  return (
+    <div className="min-h-screen bg-[#0A1F44] text-white">
+      {/* Top Bar */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-[#0A1F44]/70 border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-3">
+          <div className="flex items-center gap-3">
+            <LogoMark size={40} />
+            <div>
+              <div className="font-serif text-lg leading-tight">First Nations</div>
+              <div className="font-serif text-lg -mt-1">Trade & Trust, LLC</div>
+            </div>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#about" className="hover:text-[#C6A200] transition">About</a>
+            <a href="#divisions" className="hover:text-[#C6A200] transition">Divisions</a>
+            <a href="#services" className="hover:text-[#C6A200] transition">Services</a>
+            <a href="#contact" className="hover:text-[#C6A200] transition">Contact</a>
+            <a href="#rfq" className="hover:text-[#C6A200] transition">Request Quote</a>
+          </nav>
+          <a href="#contact" className="md:hidden inline-flex items-center gap-2 text-sm">
+            <Mail className="w-4 h-4" /> Contact
+          </a>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <LogoMark size={72} />
+              <h1 className="text-4xl md:text-5xl font-serif leading-tight">
+                Integrity. Excellence. Empowerment.
+              </h1>
+            </div>
+            <p className="text-white/80 text-lg md:text-xl max-w-prose">
+              A trusted multi‑service organization delivering advocacy, research, documentation, and
+              operational support—from cleaning and handyman work to courier services and personal development.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild className="bg-[#C6A200] text-[#0A1F44] hover:opacity-90 rounded-2xl px-6 py-6 text-base">
+                <a href="#rfq">Request a Quote</a>
+              </Button>
+              <Button asChild variant="secondary" className="bg-white/10 hover:bg-white/20 rounded-2xl px-6 py-6 text-base">
+                <a href="#divisions" className="inline-flex items-center gap-2">Explore Divisions <ChevronRight className="w-4 h-4"/></a>
+              </Button>
+            </div>
+          </div>
+          <div className="relative">
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="rounded-2xl border border-white/10 shadow-2xl p-6 bg-white/5"
+            >
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: Scale, label: "Advocacy" },
+                  { icon: FileText, label: "Research" },
+                  { icon: Hammer, label: "Quality" },
+                  { icon: Truck, label: "Courier" },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="rounded-xl bg-white/5 border border-white/10 p-4 flex items-center gap-3">
+                    <Icon className="w-5 h-5 text-[#C6A200]" />
+                    <span className="text-sm">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Soft gradient backdrop */}
+        <div className="pointer-events-none absolute -top-20 right-0 w-[600px] h-[600px] rounded-full bg-[#C6A200]/10 blur-3xl" />
+      </section>
+
+      {/* About */}
+      <Section id="about" title="About the Company">
+        <div className="prose prose-invert max-w-3xl">
+          <p>
+            First Nations Trade & Trust, LLC advances self‑sufficiency, excellence, and empowerment through
+            professional advocacy and operational support services. Our teams combine meticulous execution with
+            ethical leadership to create reliable outcomes for clients across public and private sectors.
+          </p>
+        </div>
+      </Section>
+
+      {/* Divisions */}
+      <Section id="divisions" title="Divisions">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {divisions.map((d) => {
+            const Icon = d.icon;
+            return (
+              <Card key={d.key} className="bg-white/5 border-white/10 rounded-2xl">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-white">
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl" style={{ backgroundColor: d.accent + "20" }}>
+                      <Icon className="w-5 h-5" style={{ color: d.accent }} />
+                    </span>
+                    <span className="text-lg leading-snug">{d.name}</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/80 text-sm">{d.short}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* Services snapshot */}
+      <Section id="services" title="Core Services">
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              title: "Administrative Advocacy",
+              body: "Representation in administrative settings, benefits disputes, and procedural guidance.",
+            },
+            {
+              title: "Legal Research & Documentation",
+              body: "High‑quality research and clear, compliant document preparation.",
+            },
+            {
+              title: "Operations & Support",
+              body: "Cleaning, handyman, and courier services executed with precision and care.",
+            },
+          ].map((s) => (
+            <Card key={s.title} className="bg-white/5 border-white/10 rounded-2xl">
+              <CardHeader>
+                <CardTitle className="text-white text-xl">{s.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-white/80 text-sm">{s.body}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* RFQ */}
+      <Section id="rfq" title="Request a Quote">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <form className="grid gap-4">
+              <div className="grid gap-2">
+                <label htmlFor="name" className="text-sm">Name</label>
+                <input id="name" className="bg-transparent border border-white/20 rounded-xl px-3 py-2 outline-none focus:border-[#C6A200]" placeholder="Your full name" />
+              </div>
+              <div className="grid gap-2">
+                <label htmlFor="email" className="text-sm">Email</label>
+                <input id="email" type="email" className="bg-transparent border border-white/20 rounded-xl px-3 py-2 outline-none focus:border-[#C6A200]" placeholder="name@example.com" />
+              </div>
+              <div className="grid gap-2">
+                <label htmlFor="service" className="text-sm">Service Needed</label>
+                <select id="service" className="bg-[#0A1F44] border border-white/20 rounded-xl px-3 py-2 focus:border-[#C6A200]">
+                  <option>HHH Advocacy</option>
+                  <option>Legal Research & Docs</option>
+                  <option>HHH Cleaning</option>
+                  <option>HHH Handyman</option>
+                  <option>HHH Courier</option>
+                  <option>Self‑Growth & Governance</option>
+                </select>
+              </div>
+              <div className="grid gap-2">
+                <label htmlFor="details" className="text-sm">Project Details</label>
+                <textarea id="details" className="bg-transparent border border-white/20 rounded-xl px-3 py-2 h-28 outline-none focus:border-[#C6A200]" placeholder="Tell us what you need" />
+              </div>
+              <Button type="submit" className="bg-[#C6A200] text-[#0A1F44] hover:opacity-90 rounded-2xl px-6 py-6 text-base inline-flex items-center gap-2">
+                Submit Request <ChevronRight className="w-4 h-4" />
+              </Button>
+              <p className="text-xs text-white/60">Submitting will open your email client with a pre‑filled message until forms processing is configured.</p>
+            </form>
+          </div>
+          <div className="prose prose-invert">
+            <p>
+              Prefer to email directly? Send details to <a className="text-[#C6A200] underline" href="mailto:info@firstnationstradeandtrust.com">info@firstnationstradeandtrust.com</a> and we’ll follow up.
+            </p>
+            <ul>
+              <li>Typical response within one business day.</li>
+              <li>Confidential handling of sensitive information.</li>
+              <li>Detailed estimates with clear scopes and timelines.</li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* Contact */}
+      <Section id="contact" title="Contact">
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card className="bg-white/5 border-white/10 rounded-2xl">
+            <CardHeader>
+              <CardTitle className="text-white text-lg flex items-center gap-2"><Mail className="w-5 h-5 text-[#C6A200]"/> Email</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <a className="underline text-white/90" href="mailto:info@firstnationstradeandtrust.com">info@firstnationstradeandtrust.com</a>
+            </CardContent>
+          </Card>
+          <Card className="bg-white/5 border-white/10 rounded-2xl">
+            <CardHeader>
+              <CardTitle className="text-white text-lg flex items-center gap-2"><Phone className="w-5 h-5 text-[#C6A200]"/> Phone</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-white/80">(000) 000‑0000</p>
+              <p className="text-white/60 text-sm">Replace with your business line.</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-white/5 border-white/10 rounded-2xl">
+            <CardHeader>
+              <CardTitle className="text-white text-lg flex items-center gap-2"><Shield className="w-5 h-5 text-[#C6A200]"/> Headquarters</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-white/80">City, State • United States</p>
+              <p className="text-white/60 text-sm">Update with your address and licensing details.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-10">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/70">
+          <div className="flex items-center gap-2">
+            <LogoMark size={28} />
+            <span>© {new Date().getFullYear()} First Nations Trade & Trust, LLC</span>
+          </div>
+          <nav className="flex items-center gap-4">
+            <a href="#about" className="hover:text-white">About</a>
+            <a href="#divisions" className="hover:text-white">Divisions</a>
+            <a href="#services" className="hover:text-white">Services</a>
+            <a href="#contact" className="hover:text-white">Contact</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  );
+}
